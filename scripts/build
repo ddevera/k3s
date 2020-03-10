@@ -105,11 +105,17 @@ fi
 # CGO_ENABLED=1 go build -tags "$TAGS" -ldflags "$VERSIONFLAGS $LDFLAGS $STATIC" -o bin/k3s-agent ./cmd/agent/main.go
 echo Building server
 CGO_ENABLED=1 go build -tags "$TAGS" -ldflags "$VERSIONFLAGS $LDFLAGS $STATIC_SQLITE" -o bin/containerd ./cmd/server/main.go
+echo After GO BUILD
 ln -s containerd ./bin/k3s-agent
+echo after agent
 ln -s containerd ./bin/k3s-server
+echo after server
 ln -s containerd ./bin/kubectl
+echo after kubectl
 ln -s containerd ./bin/crictl
+echo after crictl
 ln -s containerd ./bin/ctr
+echo after ctr
 #echo Building hyperkube
 #CGO_ENABLED=1 go build -tags "$TAGS" -ldflags "$VERSIONFLAGS $LDFLAGS $STATIC_SQLITE" -o bin/hyperkube ./vendor/k8s.io/kubernetes/cmd/hyperkube/
 #echo Building ctr
